@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
 import com.example.stopwatch.databinding.ActivityMainBinding
 import kotlin.math.roundToInt
 
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         stopTimer()
         time= 0.0
         binding.Time.text = getTimeStringFromDouble(time)
+        binding.fondo.setBackgroundColor(getColor(R.color.white))
     }
     private fun startStopTimer(){
         if (timerStarted)
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         startService(serviceIntent)
         binding.StartButton.text = "Stop"
         binding.StartButton.icon = getDrawable(R.drawable.baseline_pause_24)
+        binding.fondo.setBackgroundColor(getColor(R.color.green))
         timerStarted = true
 
     }
@@ -51,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         binding.StartButton.text = "Play"
         binding.StartButton.icon = getDrawable(R.drawable.baseline_play_arrow_24)
         timerStarted = false
+        binding.fondo.setBackgroundColor(getColor(R.color.red))
     }
 
     private val updateTime: BroadcastReceiver = object : BroadcastReceiver()
